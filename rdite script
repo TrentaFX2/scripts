@@ -340,8 +340,11 @@ _initCreds(KartGui.Main.intro, KartGui.Main.discord)
 task.wait(3)
 tweenObj(KartGui.Main, .75, 'Out', 'Quint', true, {Position = UDim2.new(0.782, 0, 0.164, 0)})
 
-local speedLoop = false
-local slowLoop = false
+local speedStat = Instance.new("IntValue", script)
+local slowStat = Instance.new("IntValue", script)
+
+speedStat.Name = "SpeedLoop"
+slowStat.Name = "SlowLoop"
 
 --// Toggles
 local isSmall = false
@@ -364,18 +367,18 @@ KartGui.Main['small'].MouseButton1Click:Connect(function()
 end)
 
 KartGui.Main['LoopSpeed'].MouseButton1Click:Connect(function()
-	speedLoop = true
+	speedStat.Value = true
 	print("loop speed")
 end)
 
 KartGui.Main['LoopSlow'].MouseButton1Click:Connect(function()
-	slowLoop = true
+	slowStat.Value = true
 	print("loop slow")
 end)
 
 KartGui.Main['StopLoop'].MouseButton1Click:Connect(function()
-	slowLoop = false
-	speedLoop = false
+	speedStat.Value = false
+	slowStat.Value = false
 	print("stopped loop")
 end)
 
@@ -399,7 +402,7 @@ end)
 KartGui.Main['TurnAllOff'].MouseButton1Click:Connect(function()
 	for _,i in pairs(CartsFolder:GetChildren()) do
 		if i:IsA("Model") then
-			if i.On.BrickColor ~= "Bright Red" then
+			if i.On.BrickColor ~= BrickColor.new("Bright red") then
 				fireclickdetector(i.On['Click'])
 			end
 		end
@@ -409,7 +412,7 @@ end)
 KartGui.Main['TurnAllOn'].MouseButton1Click:Connect(function()
 	for _,i in pairs(CartsFolder:GetChildren()) do
 		if i:IsA("Model") then
-			if i.On.BrickColor ~= "Dark Green" then
+			if i.On.BrickColor ~= BrickColor.new("Dark green") then
 				fireclickdetector(i.On['Click'])
 			end
 		end
@@ -427,18 +430,28 @@ end)
 
 
 --// Actual Loop Itself
-while task.wait() do
-	if slowLoop == true then
-		for _,i in pairs(game.Workspace.Carts2:GetChildren()) do
-			if i:IsA("Model") then
-				fireclickdetector(i.Down['Click'])
+script:FindFirstChild("SpeedLoop"):GetPropertyChangedSignal("Value"):Connect(function()
+	if script.SpeedLoop.Value == true then
+		repeat
+			for _,i in pairs(CartsFolder:GetChildren()) do
+				if i:IsA("Model") then
+					fireclickdetector(i.Up['Click'])
+				end
 			end
-		end
-	elseif speedLoop == true then
-		for _,i in pairs(CartsFolder:GetChildren()) do
-			if i:IsA("Model") then
-				fireclickdetector(i.Up['Click'])
-			end
-		end
+			task.wait()
+		until script.SpeedLoop.Value == false
 	end
-end
+end)
+
+script:FindFirstChild("SlowLoop"):GetPropertyChangedSignal("Value"):Connect(function()
+	if script.SlowLoop.Value == true then
+		repeat
+			for _,i in pairs(CartsFolder:GetChildren()) do
+				if i:IsA("Model") then
+					fireclickdetector(i.Down['Click'])
+				end
+			end
+			task.wait()
+		until script.SlowLoop.Value == false
+	end
+end)
