@@ -340,6 +340,45 @@ _initCreds(KartGui.Main.intro, KartGui.Main.discord)
 task.wait(3)
 tweenObj(KartGui.Main, .75, 'Out', 'Quint', true, {Position = UDim2.new(0.782, 0, 0.164, 0)})
 
+_G.speedLoop = false
+_G.slowLoop = false
+
+--// Toggles
+local isSmall = false
+local canclick = true
+
+KartGui.Main['small'].MouseButton1Click:Connect(function()
+	if isSmall == false and canclick == true then
+		canclick = false
+		tweenObj(KartGui.Main, .75, 'Out', 'Quint', true, {Position = UDim2.new(0.782, 0, 0.164, 450)})
+		KartGui.Main.small.Text = "+"
+		isSmall = true
+		canclick = true
+	elseif isSmall == true and canclick == true then
+		canclick = false
+		tweenObj(KartGui.Main, .75, 'Out', 'Quint', true, {Position = UDim2.new(0.782, 0, 0.164, 0)})
+		KartGui.Main.small.Text = "-"
+		isSmall = false
+		canclick = true
+	end
+end)
+
+KartGui.Main['LoopSpeed'].MouseButton1Click:Connect(function()
+	_G.speedLoop = true
+	print("loop speed")
+end)
+
+KartGui.Main['LoopSlow'].MouseButton1Click:Connect(function()
+	_G.slowLoop = true
+	print("loop slow")
+end)
+
+KartGui.Main['StopLoop'].MouseButton1Click:Connect(function()
+	_G.slowLoop = false
+	_G.speedLoop = false
+	print("stopped loop")
+end)
+
 --// Speeds
 KartGui.Main['SlowAll'].MouseButton1Click:Connect(function()
 	for _,i in pairs(CartsFolder:GetChildren()) do
@@ -386,45 +425,6 @@ KartGui.Main['SpawnAll'].MouseButton1Click:Connect(function()
 	end
 end)
 
---// Toggles
-local isSmall = false
-local canclick = true
-
-KartGui.Main['small'].MouseButton1Click:Connect(function()
-	if isSmall == false and canclick == true then
-		canclick = false
-		tweenObj(KartGui.Main, .75, 'Out', 'Quint', true, {Position = UDim2.new(0.782, 0, 0.164, 450)})
-		KartGui.Main.small.Text = "+"
-		isSmall = true
-		canclick = true
-	elseif isSmall == true and canclick == true then
-		canclick = false
-		tweenObj(KartGui.Main, .75, 'Out', 'Quint', true, {Position = UDim2.new(0.782, 0, 0.164, 0)})
-		KartGui.Main.small.Text = "-"
-		isSmall = false
-		canclick = true
-	end
-end)
-
---// Loops
-_G.speedLoop = false
-_G.slowLoop = false
-
-KartGui.Main['LoopSpeed'].MouseButton1Click:Connect(function()
-	_G.speedLoop = true
-	print("loop speed")
-end)
-
-KartGui.Main['LoopSlow'].MouseButton1Click:Connect(function()
-	_G.slowLoop = true
-	print("loop slow")
-end)
-
-KartGui.Main['StopLoop'].MouseButton1Click:Connect(function()
-	_G.slowLoop = false
-	_G.speedLoop = false
-	print("stopped loop")
-end)
 
 --// Actual Loop Itself
 while task.wait() do
