@@ -340,8 +340,8 @@ _initCreds(KartGui.Main.intro, KartGui.Main.discord)
 task.wait(3)
 tweenObj(KartGui.Main, .75, 'Out', 'Quint', true, {Position = UDim2.new(0.782, 0, 0.164, 0)})
 
-_G.speedLoop = false
-_G.slowLoop = false
+local speedLoop = false
+local slowLoop = false
 
 --// Toggles
 local isSmall = false
@@ -364,18 +364,18 @@ KartGui.Main['small'].MouseButton1Click:Connect(function()
 end)
 
 KartGui.Main['LoopSpeed'].MouseButton1Click:Connect(function()
-	_G.speedLoop = true
+	speedLoop = true
 	print("loop speed")
 end)
 
 KartGui.Main['LoopSlow'].MouseButton1Click:Connect(function()
-	_G.slowLoop = true
+	slowLoop = true
 	print("loop slow")
 end)
 
 KartGui.Main['StopLoop'].MouseButton1Click:Connect(function()
-	_G.slowLoop = false
-	_G.speedLoop = false
+	slowLoop = false
+	speedLoop = false
 	print("stopped loop")
 end)
 
@@ -428,18 +428,16 @@ end)
 
 --// Actual Loop Itself
 while task.wait() do
-	if _G.slowLoop == true or _G.speedLoop == true then
-		if _G.slowLoop == true then
-			for _,i in pairs(game.Workspace.Carts2:GetChildren()) do
-				if i:IsA("Model") then
-					fireclickdetector(i.Down['Click'])
-				end
+	if slowLoop == true then
+		for _,i in pairs(game.Workspace.Carts2:GetChildren()) do
+			if i:IsA("Model") then
+				fireclickdetector(i.Down['Click'])
 			end
-		elseif _G.speedLoop == true then
-			for _,i in pairs(CartsFolder:GetChildren()) do
-				if i:IsA("Model") then
-					fireclickdetector(i.Up['Click'])
-				end
+		end
+	elseif speedLoop == true then
+		for _,i in pairs(CartsFolder:GetChildren()) do
+			if i:IsA("Model") then
+				fireclickdetector(i.Up['Click'])
 			end
 		end
 	end
