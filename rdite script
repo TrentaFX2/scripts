@@ -105,6 +105,7 @@ local function _initUI()
 	SlowAll.Text = "Slow down All Carts"
 	SlowAll.TextColor3 = Color3.fromRGB(255, 255, 255)
 	SlowAll.TextSize = 14.000
+	SlowAll.ZIndex = 5
 
 	UICorner.CornerRadius = UDim.new(1, 8)
 	UICorner.Parent = SlowAll
@@ -119,6 +120,7 @@ local function _initUI()
 	SpeedAll.Text = "Speed Up All Carts"
 	SpeedAll.TextColor3 = Color3.fromRGB(255, 255, 255)
 	SpeedAll.TextSize = 14.000
+	SpeedAll.ZIndex = 5
 
 	UICorner_2.CornerRadius = UDim.new(1, 8)
 	UICorner_2.Parent = SpeedAll
@@ -157,6 +159,7 @@ local function _initUI()
 	TurnAllOn.Text = "Turn On"
 	TurnAllOn.TextColor3 = Color3.fromRGB(255, 255, 255)
 	TurnAllOn.TextSize = 14.000
+	TurnAllOn.ZIndex = 5
 
 	UICorner_3.CornerRadius = UDim.new(1, 8)
 	UICorner_3.Parent = TurnAllOn
@@ -171,6 +174,7 @@ local function _initUI()
 	SpawnAll.Text = "Spawn All Karts"
 	SpawnAll.TextColor3 = Color3.fromRGB(255, 255, 255)
 	SpawnAll.TextSize = 14.000
+	SpawnAll.ZIndex = 5
 
 	UICorner_4.CornerRadius = UDim.new(1, 8)
 	UICorner_4.Parent = SpawnAll
@@ -329,7 +333,7 @@ _initUI()
 local KartGui = game:GetService("CoreGui"):FindFirstChild("KartRide")
 local CartsFolder = _Workspace:FindFirstChild("Carts2")
 
-KartGui.Main.Position = UDim2.new(0.782, 300, 0.164, 0)
+KartGui.Main.Position = UDim2.new(0.782, 500, 0.164, 0)
 KartGui.Main.Visible = true
 
 _initCreds(KartGui.Main.intro, KartGui.Main.discord)
@@ -408,15 +412,18 @@ _G.slowLoop = false
 
 KartGui.Main['LoopSpeed'].MouseButton1Click:Connect(function()
 	_G.speedLoop = true
+	print("loop speed")
 end)
 
 KartGui.Main['LoopSlow'].MouseButton1Click:Connect(function()
 	_G.slowLoop = true
+	print("loop slow")
 end)
 
 KartGui.Main['StopLoop'].MouseButton1Click:Connect(function()
 	_G.slowLoop = false
 	_G.speedLoop = false
+	print("stopped loop")
 end)
 
 --// Actual Loop Itself
