@@ -1,1 +1,422 @@
+warn("MADE BY TrentaFX#7173")
+--// Dont be a fag and give credit
 
+local tweenService = game:GetService("TweenService")
+local playerService = game:GetService("Players")
+local _Workspace = game:GetService("Workspace")
+
+local function tweenObj(obj, Time, Type, Style, shouldWait, propertyTable)
+	--if obj and Time and Style and shouldWait then
+	if shouldWait == false then
+		local newTween = tweenService:Create(obj, TweenInfo.new(Time, Enum.EasingStyle[Style], Enum.EasingDirection[Type], 0, false, 0), propertyTable)
+		newTween:Play()
+	else
+		local newTween = tweenService:Create(obj, TweenInfo.new(Time, Enum.EasingStyle[Style], Enum.EasingDirection[Type], 0, false, 0), propertyTable)
+		newTween:Play()
+		newTween.Completed:Wait()
+	end
+	--end
+end
+
+for _,obj in pairs(_Workspace:GetChildren()) do
+	if obj:IsA("Folder") then
+		if obj.Name ~= "Carts" then print("nope") end
+		if obj.Name == "Carts" then
+			if obj:FindFirstChildWhichIsA("Model") then
+				obj.Name = "Carts2"
+			end
+		end
+	end
+end
+
+if not fireclickdetector then
+	playerService.LocalPlayer:Kick("Your exploit doesn't support this script")
+else
+	print("Supported")
+end
+
+
+local function _initUI()
+	local KartRide = Instance.new("ScreenGui")
+	local Main = Instance.new("Frame")
+	local title = Instance.new("TextLabel")
+	local SlowAll = Instance.new("TextButton")
+	local UICorner = Instance.new("UICorner")
+	local SpeedAll = Instance.new("TextButton")
+	local UICorner_2 = Instance.new("UICorner")
+	local title_2 = Instance.new("TextLabel")
+	local title_3 = Instance.new("TextLabel")
+	local TurnAllOn = Instance.new("TextButton")
+	local UICorner_3 = Instance.new("UICorner")
+	local SpawnAll = Instance.new("TextButton")
+	local UICorner_4 = Instance.new("UICorner")
+	local TurnAlloff = Instance.new("TextButton")
+	local UICorner_5 = Instance.new("UICorner")
+	local title_4 = Instance.new("TextLabel")
+	local LoopSpeed = Instance.new("TextButton")
+	local UICorner_6 = Instance.new("UICorner")
+	local LoopSlow = Instance.new("TextButton")
+	local UICorner_7 = Instance.new("UICorner")
+	local StopLoop = Instance.new("TextButton")
+	local UICorner_8 = Instance.new("UICorner")
+	local title_5 = Instance.new("TextLabel")
+	local Frame = Instance.new("TextButton")
+	local intro = Instance.new("TextLabel")
+	local discord = Instance.new("TextLabel")
+	local small = Instance.new("TextButton")
+	local UICorner_9 = Instance.new("UICorner")
+
+	--Properties:
+
+	KartRide.Name = "KartRide"
+	KartRide.Parent = game:GetService("CoreGui")
+	KartRide.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+	Main.Name = "Main"
+	Main.Parent = KartRide
+	Main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Main.BorderSizePixel = 0
+	Main.Position = UDim2.new(0.782426775, 0, 0.163822532, 0)
+	Main.Size = UDim2.new(0.198326364, 0, 0.80375427, 0)
+	Main.ZIndex = 0
+	Main.Visible = false
+
+	title.Name = "title"
+	title.Parent = Main
+	title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title.BackgroundTransparency = 1.000
+	title.Position = UDim2.new(0.0759493634, 0, -0.0255241878, 0)
+	title.Size = UDim2.new(0.843881845, 0, 0.106666669, 0)
+	title.ZIndex = 2
+	title.Font = Enum.Font.GothamMedium
+	title.Text = "Ride Into Rdite Panel"
+	title.TextColor3 = Color3.fromRGB(255, 255, 255)
+	title.TextSize = 15.000
+	title.TextWrapped = true
+
+	SlowAll.Name = "SlowAll"
+	SlowAll.Parent = Main
+	SlowAll.BackgroundColor3 = Color3.fromRGB(26, 30, 34)
+	SlowAll.Position = UDim2.new(0.0759493634, 0, 0.866171241, 0)
+	SlowAll.Size = UDim2.new(0.843881845, 0, 0.0838286281, 0)
+	SlowAll.AutoButtonColor = false
+	SlowAll.Font = Enum.Font.GothamMedium
+	SlowAll.Text = "Slow down All Carts"
+	SlowAll.TextColor3 = Color3.fromRGB(255, 255, 255)
+	SlowAll.TextSize = 14.000
+
+	UICorner.CornerRadius = UDim.new(1, 8)
+	UICorner.Parent = SlowAll
+
+	SpeedAll.Name = "SpeedAll"
+	SpeedAll.Parent = Main
+	SpeedAll.BackgroundColor3 = Color3.fromRGB(26, 30, 34)
+	SpeedAll.Position = UDim2.new(0.0759493634, 0, 0.762488484, 0)
+	SpeedAll.Size = UDim2.new(0.843881845, 0, 0.0838286281, 0)
+	SpeedAll.AutoButtonColor = false
+	SpeedAll.Font = Enum.Font.GothamMedium
+	SpeedAll.Text = "Speed Up All Carts"
+	SpeedAll.TextColor3 = Color3.fromRGB(255, 255, 255)
+	SpeedAll.TextSize = 14.000
+
+	UICorner_2.CornerRadius = UDim.new(1, 8)
+	UICorner_2.Parent = SpeedAll
+
+	title_2.Name = "title"
+	title_2.Parent = Main
+	title_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title_2.BackgroundTransparency = 1.000
+	title_2.Position = UDim2.new(0.0759493634, 0, 0.691496611, 0)
+	title_2.Size = UDim2.new(0.843881845, 0, 0.0705732405, 0)
+	title_2.Font = Enum.Font.Gotham
+	title_2.Text = "Speed Controls"
+	title_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+	title_2.TextSize = 15.000
+	title_2.TextWrapped = true
+
+	title_3.Name = "title"
+	title_3.Parent = Main
+	title_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title_3.BackgroundTransparency = 1.000
+	title_3.Position = UDim2.new(0.0759999976, 0, 0.391000003, 8)
+	title_3.Size = UDim2.new(0.843881845, 0, 0.0535881184, 0)
+	title_3.Font = Enum.Font.Gotham
+	title_3.Text = "Kart Controls - All"
+	title_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+	title_3.TextSize = 15.000
+	title_3.TextWrapped = true
+
+	TurnAllOn.Name = "TurnAllOn"
+	TurnAllOn.Parent = Main
+	TurnAllOn.BackgroundColor3 = Color3.fromRGB(26, 30, 34)
+	TurnAllOn.Position = UDim2.new(0.0759493634, 0, 0.470676959, 0)
+	TurnAllOn.Size = UDim2.new(0.409282714, 0, 0.0838286281, 0)
+	TurnAllOn.AutoButtonColor = false
+	TurnAllOn.Font = Enum.Font.GothamMedium
+	TurnAllOn.Text = "Turn On"
+	TurnAllOn.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TurnAllOn.TextSize = 14.000
+
+	UICorner_3.CornerRadius = UDim.new(1, 8)
+	UICorner_3.Parent = TurnAllOn
+
+	SpawnAll.Name = "SpawnAll"
+	SpawnAll.Parent = Main
+	SpawnAll.BackgroundColor3 = Color3.fromRGB(26, 30, 34)
+	SpawnAll.Position = UDim2.new(0.0759493634, 0, 0.574359775, 0)
+	SpawnAll.Size = UDim2.new(0.843881845, 0, 0.0838286281, 0)
+	SpawnAll.AutoButtonColor = false
+	SpawnAll.Font = Enum.Font.GothamMedium
+	SpawnAll.Text = "Spawn All Karts"
+	SpawnAll.TextColor3 = Color3.fromRGB(255, 255, 255)
+	SpawnAll.TextSize = 14.000
+
+	UICorner_4.CornerRadius = UDim.new(1, 8)
+	UICorner_4.Parent = SpawnAll
+
+	TurnAlloff.Name = "TurnAlloff"
+	TurnAlloff.Parent = Main
+	TurnAlloff.BackgroundColor3 = Color3.fromRGB(26, 30, 34)
+	TurnAlloff.Position = UDim2.new(0.514767945, 0, 0.470676959, 0)
+	TurnAlloff.Size = UDim2.new(0.405063301, 0, 0.0838286281, 0)
+	TurnAlloff.AutoButtonColor = false
+	TurnAlloff.Font = Enum.Font.GothamMedium
+	TurnAlloff.Text = "Turn Off"
+	TurnAlloff.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TurnAlloff.TextSize = 14.000
+
+	UICorner_5.CornerRadius = UDim.new(1, 8)
+	UICorner_5.Parent = TurnAlloff
+
+	title_4.Name = "title"
+	title_4.Parent = Main
+	title_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title_4.BackgroundTransparency = 1.000
+	title_4.Position = UDim2.new(0.0759493634, 0, 0.103386223, 0)
+	title_4.Size = UDim2.new(0.843881845, 0, 0.0705732405, 0)
+	title_4.Font = Enum.Font.Gotham
+	title_4.Text = "Loop Speed/Slow"
+	title_4.TextColor3 = Color3.fromRGB(0, 0, 0)
+	title_4.TextSize = 15.000
+	title_4.TextWrapped = true
+
+	LoopSpeed.Name = "LoopSpeed"
+	LoopSpeed.Parent = Main
+	LoopSpeed.BackgroundColor3 = Color3.fromRGB(26, 30, 34)
+	LoopSpeed.Position = UDim2.new(0.0759493634, 0, 0.174378097, 0)
+	LoopSpeed.Size = UDim2.new(0.843881845, 0, 0.0838286281, 0)
+	LoopSpeed.AutoButtonColor = false
+	LoopSpeed.Font = Enum.Font.GothamMedium
+	LoopSpeed.Text = "Speed"
+	LoopSpeed.TextColor3 = Color3.fromRGB(255, 255, 255)
+	LoopSpeed.TextSize = 14.000
+
+	UICorner_6.CornerRadius = UDim.new(1, 8)
+	UICorner_6.Parent = LoopSpeed
+
+	LoopSlow.Name = "LoopSlow"
+	LoopSlow.Parent = Main
+	LoopSlow.BackgroundColor3 = Color3.fromRGB(26, 30, 34)
+	LoopSlow.Position = UDim2.new(0.0759493634, 0, 0.278060853, 0)
+	LoopSlow.Size = UDim2.new(0.561181426, 0, 0.0838286281, 0)
+	LoopSlow.AutoButtonColor = false
+	LoopSlow.Font = Enum.Font.GothamMedium
+	LoopSlow.Text = "Slow"
+	LoopSlow.TextColor3 = Color3.fromRGB(255, 255, 255)
+	LoopSlow.TextSize = 14.000
+
+	UICorner_7.CornerRadius = UDim.new(1, 8)
+	UICorner_7.Parent = LoopSlow
+
+	StopLoop.Name = "StopLoop"
+	StopLoop.Parent = Main
+	StopLoop.BackgroundColor3 = Color3.fromRGB(26, 30, 34)
+	StopLoop.Position = UDim2.new(0.662447274, 0, 0.278060853, 0)
+	StopLoop.Size = UDim2.new(0.257383972, 0, 0.0838286281, 0)
+	StopLoop.AutoButtonColor = false
+	StopLoop.Font = Enum.Font.GothamMedium
+	StopLoop.Text = "Stop"
+	StopLoop.TextColor3 = Color3.fromRGB(255, 255, 255)
+	StopLoop.TextSize = 14.000
+
+	UICorner_8.CornerRadius = UDim.new(1, 8)
+	UICorner_8.Parent = StopLoop
+
+	title_5.Name = "title"
+	title_5.Parent = Main
+	title_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title_5.BackgroundTransparency = 1.000
+	title_5.Position = UDim2.new(0.0759493634, 0, 0.0360469259, 0)
+	title_5.Size = UDim2.new(0.843881845, 0, 0.045095548, 0)
+	title_5.ZIndex = 2
+	title_5.Font = Enum.Font.Gotham
+	title_5.Text = "Made By TrentaFX#7173"
+	title_5.TextColor3 = Color3.fromRGB(255, 255, 255)
+	title_5.TextSize = 10.000
+	title_5.TextWrapped = true
+
+	Frame.Name = "Frame"
+	Frame.Parent = Main
+	Frame.BackgroundColor3 = Color3.fromRGB(26, 30, 34)
+	Frame.Position = UDim2.new(0, 0, -0.00184268504, 0)
+	Frame.Size = UDim2.new(1, 0, 0.0838286281, 0)
+	Frame.AutoButtonColor = false
+	Frame.Font = Enum.Font.GothamMedium
+	Frame.Text = ""
+	Frame.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Frame.TextSize = 14.000
+
+	intro.Name = "intro"
+	intro.Parent = Main
+	intro.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	intro.BackgroundTransparency = 1.000
+	intro.Position = UDim2.new(-2.4599154, 0, 0.360887706, 0)
+	intro.Size = UDim2.new(1.90295362, 0, 0.0916834474, 0)
+	intro.Visible = false
+	intro.ZIndex = 2
+	intro.Font = Enum.Font.Gotham
+	intro.Text = "TrentaFX Creation"
+	intro.TextColor3 = Color3.fromRGB(255, 255, 255)
+	intro.TextScaled = true
+	intro.TextSize = 15.000
+	intro.TextWrapped = true
+
+	discord.Name = "discord"
+	discord.Parent = Main
+	discord.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	discord.BackgroundTransparency = 1.000
+	discord.Position = UDim2.new(-2.4599154, 0, 0.460675359, 0)
+	discord.Size = UDim2.new(1.90295362, 0, 0.0364817306, 0)
+	discord.Visible = false
+	discord.ZIndex = 2
+	discord.Font = Enum.Font.Gotham
+	discord.Text = "TrentaFX#7173"
+	discord.TextColor3 = Color3.fromRGB(255, 255, 255)
+	discord.TextScaled = true
+	discord.TextSize = 15.000
+	discord.TextWrapped = true
+
+	small.Name = "small"
+	small.Parent = Main
+	small.BackgroundColor3 = Color3.fromRGB(41, 47, 54)
+	small.Position = UDim2.new(0.89451474, 0, 0.0126680508, 0)
+	small.Size = UDim2.new(0.0759493634, 0, 0.0291470625, 0)
+	small.AutoButtonColor = false
+	small.Font = Enum.Font.GothamBlack
+	small.Text = "-"
+	small.TextColor3 = Color3.fromRGB(255, 255, 255)
+	small.TextSize = 14.000
+
+	UICorner_9.CornerRadius = UDim.new(1, 8)
+	UICorner_9.Parent = small
+end
+
+local function _initCreds(label1, label2)
+	label1.TextTransparency = 1 label2.TextTransparency = 1
+	label1.Visible = true label2.Visible = true
+	tweenObj(label1, 3.5, 'Out', 'Quint', false, {TextTransparency = 0})
+	task.wait(1)
+	tweenObj(label2, 3.5, 'Out', 'Quint', false, {TextTransparency = 0})
+	task.wait(7.5)
+	tweenObj(label1, 3.5, 'Out', 'Quint', false, {TextTransparency = 1})
+	task.wait(1)
+	tweenObj(label2, 3.5, 'Out', 'Quint', false, {TextTransparency = 1})
+end
+
+_initUI()
+local KartGui = game:GetService("CoreGui"):FindFirstChild("KartRide")
+local CartsFolder = _Workspace:FindFirstChild("Carts2")
+
+KartGui.Main.Position = UDim2.new(0.782, 300, 0.164, 0)
+KartGui.Main.Visible = true
+
+tweenObj(KartGui.Main, .75, 'Out', 'Quint', true, {Position = UDim2.new(0.782, 0, 0.164, 0)})
+_initCreds(KartGui.Main.intro, KartGui.Main.discord)
+
+--// Speeds
+KartGui.Main['SlowAll'].MouseButton1Click:Connect(function()
+	for _,i in pairs(CartsFolder:GetChildren()) do
+		if i:IsA("Model") then
+			fireclickdetector(i.Down['Click'])
+		end
+	end
+end)
+
+KartGui.Main['SpeedAll'].MouseButton1Click:Connect(function()
+	for _,i in pairs(CartsFolder:GetChildren()) do
+		if i:IsA("Model") then
+			fireclickdetector(i.Up['Click'])
+		end
+	end
+end)
+
+KartGui.Main['TurnAllOff'].MouseButton1Click:Connect(function()
+	for _,i in pairs(CartsFolder:GetChildren()) do
+		if i:IsA("Model") then
+			if i.On.BrickColor ~= "Bright Red" then
+				fireclickdetector(i.On['Click'])
+			end
+		end
+	end
+end)
+
+KartGui.Main['TurnAllOn'].MouseButton1Click:Connect(function()
+	for _,i in pairs(CartsFolder:GetChildren()) do
+		if i:IsA("Model") then
+			if i.On.BrickColor ~= "Dark Green" then
+				fireclickdetector(i.On['Click'])
+			end
+		end
+	end
+end)
+
+--// Toggles
+local isSmall = false
+local canclick = true
+
+KartGui.Main['small'].MouseButton1Click:Connect(function()
+	if isSmall == false and canclick == true then
+		canclick = false
+		tweenObj(KartGui.Main, .75, 'Out', 'Quint', true, {Position = UDim2.new(0.782, 0, 0.164, 450)})
+		KartGui.Main.small.Text = "+"
+		isSmall = true
+		canclick = true
+	elseif isSmall == true and canclick == true then
+		canclick = false
+		tweenObj(KartGui.Main, .75, 'Out', 'Quint', true, {Position = UDim2.new(0.782, 0, 0.164, 0)})
+		KartGui.Main.small.Text = "-"
+		isSmall = false
+		canclick = true
+	end
+end)
+
+--// Loops
+_G.speedLoop = false
+_G.slowLoop = false
+
+KartGui.Main['LoopSpeed'].MouseButton1Click:Connect(function()
+	_G.speedLoop = true
+end)
+
+KartGui.Main['LoopSlow'].MouseButton1Click:Connect(function()
+	_G.slowLoop = true
+end)
+
+--// Actual Loop Itself
+while task.wait() do
+	if _G.slowLoop == true or _G.speedLoop == true then
+		if _G.slowLoop == true then
+			for _,i in pairs(game.Workspace.Carts2:GetChildren()) do
+				if i:IsA("Model") then
+					fireclickdetector(i.Down['Click'])
+				end
+			end
+		elseif _G.speedLoop == true then
+			for _,i in pairs(CartsFolder:GetChildren()) do
+				if i:IsA("Model") then
+					fireclickdetector(i.Up['Click'])
+				end
+			end
+		end
+	end
+end
