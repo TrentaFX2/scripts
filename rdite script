@@ -351,6 +351,7 @@ local isSmall = false
 local canclick = true
 
 KartGui.Main['small'].MouseButton1Click:Connect(function()
+	print("click")
 	if isSmall == false and canclick == true then
 		canclick = false
 		tweenObj(KartGui.Main, .75, 'Out', 'Quint', true, {Position = UDim2.new(0.782, 0, 0.164, 450)})
@@ -367,16 +368,19 @@ KartGui.Main['small'].MouseButton1Click:Connect(function()
 end)
 
 KartGui.Main['LoopSpeed'].MouseButton1Click:Connect(function()
+	print("click")
 	speedStat.Value = true
 	print("loop speed")
 end)
 
 KartGui.Main['LoopSlow'].MouseButton1Click:Connect(function()
+	print("click")
 	slowStat.Value = true
 	print("loop slow")
 end)
 
 KartGui.Main['StopLoop'].MouseButton1Click:Connect(function()
+	print("click")
 	speedStat.Value = false
 	slowStat.Value = false
 	print("stopped loop")
@@ -384,6 +388,7 @@ end)
 
 --// Speeds
 KartGui.Main['SlowAll'].MouseButton1Click:Connect(function()
+	print("click")
 	for _,i in pairs(CartsFolder:GetChildren()) do
 		if i:IsA("Model") then
 			fireclickdetector(i.Down['Click'])
@@ -392,6 +397,7 @@ KartGui.Main['SlowAll'].MouseButton1Click:Connect(function()
 end)
 
 KartGui.Main['SpeedAll'].MouseButton1Click:Connect(function()
+	print("click")
 	for _,i in pairs(CartsFolder:GetChildren()) do
 		if i:IsA("Model") then
 			fireclickdetector(i.Up['Click'])
@@ -400,9 +406,10 @@ KartGui.Main['SpeedAll'].MouseButton1Click:Connect(function()
 end)
 
 KartGui.Main['TurnAllOff'].MouseButton1Click:Connect(function()
+	print("click")
 	for _,i in pairs(CartsFolder:GetChildren()) do
 		if i:IsA("Model") then
-			if i.On.BrickColor ~= BrickColor.new("Bright red") then
+			if i.On.BrickColor ~= "Bright red" then
 				fireclickdetector(i.On['Click'])
 			end
 		end
@@ -410,9 +417,10 @@ KartGui.Main['TurnAllOff'].MouseButton1Click:Connect(function()
 end)
 
 KartGui.Main['TurnAllOn'].MouseButton1Click:Connect(function()
+	print("click")
 	for _,i in pairs(CartsFolder:GetChildren()) do
 		if i:IsA("Model") then
-			if i.On.BrickColor ~= BrickColor.new("Dark green") then
+			if i.On.BrickColor ~= "Dark green" then
 				fireclickdetector(i.On['Click'])
 			end
 		end
@@ -421,17 +429,19 @@ end)
 
 --// Spawn All
 KartGui.Main['SpawnAll'].MouseButton1Click:Connect(function()
+	print("click")
 	for _,i in pairs(_Workspace.Carts:GetChildren()) do
 		if i:IsA("Part") then
-			fireclickdetector(i['Click'])
+			fireclickdetector(i.Click)
 		end
 	end
 end)
 
 
 --// Actual Loop Itself
-script:FindFirstChild("SpeedLoop"):GetPropertyChangedSignal("Value"):Connect(function()
-	if script.SpeedLoop.Value == true then
+speedStat:GetPropertyChangedSignal("Value"):Connect(function()
+	print("change")
+	if speedStat.Value == true then
 		repeat
 			for _,i in pairs(CartsFolder:GetChildren()) do
 				if i:IsA("Model") then
@@ -439,12 +449,13 @@ script:FindFirstChild("SpeedLoop"):GetPropertyChangedSignal("Value"):Connect(fun
 				end
 			end
 			task.wait()
-		until script.SpeedLoop.Value == false
+		until speedStat.Value == false
 	end
 end)
 
-script:FindFirstChild("SlowLoop"):GetPropertyChangedSignal("Value"):Connect(function()
-	if script.SlowLoop.Value == true then
+slowStat:GetPropertyChangedSignal("Value"):Connect(function()
+	print("change")
+	if slowStat.Value == true then
 		repeat
 			for _,i in pairs(CartsFolder:GetChildren()) do
 				if i:IsA("Model") then
@@ -452,6 +463,6 @@ script:FindFirstChild("SlowLoop"):GetPropertyChangedSignal("Value"):Connect(func
 				end
 			end
 			task.wait()
-		until script.SlowLoop.Value == false
+		until slowStat.Value == false
 	end
 end)
